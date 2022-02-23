@@ -1,0 +1,103 @@
+@charset "UTF-8";
+@font-face {
+    font-family: 'OTWelcomeRA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeRA.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GmarketSansLight';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GmarketSansBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.nanumgothic * {
+ font-family: 'Nanum Gothic', sans-serif;
+}
+
+*{
+        font-family:'nanumgothic', 'sans-serif';
+        list-style:none;
+        text-decoration:none;
+    }
+
+
+.for_margin{width:100%; height:160px; display:block;}
+
+
+  
+
+   
+    *{
+        list-style:none;
+        text-decoration:none;
+        margin:0;
+        padding:0;
+        
+    }
+    
+    ul, dl, ol{margin:0 !important;}
+    ul, dl{padding-left:0 !important;}
+    div{width: 100%; background:white;
+    height:auto;
+    }
+    
+    header{height:10vh; position:relative; z-index:10000;}
+    
+
+    .cjh_inner{
+        position: relative;  margin: 0 auto; width:100%;
+    display:flex; align-items:center; justify-content:space-between; height:90px;}
+    .cjh_inner_bottom{
+        position: relative; height: auto;  /*80px*/
+    margin: 0 auto; background:white;
+    width:100%; border-top:1px solid #e3e3e3; opacity:1; }
+    .cjh_logo{
+    margin:0 auto;
+       width:200px;font-size:0;line-height:0;
+    }
+
+    header .cjh_inner .cjh_logo >a img{width:100%; height:100%;}
+    
+    .cjh_inner .cjh_nav2{
+        width:25%;
+        text-align:center;
+            position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(0, -50%);
+}
+    .cjh_inner .cjh_nav2>ul>li{
+    display:inline-block;
+    position:relative;
+
+}
+
+    .cjh_inner .cjh_nav2>ul>li>a{
+        position:relative;
+        padding:0 5px;
+        font-size:12px;
+        line-height:90px;
+        color:#000000;
+    }
+
+    
+
+

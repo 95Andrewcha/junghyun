@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  <mapper namespace="com.myspring.trip.mapper.CartMapper">
+	
+	<insert id="addCart">
+	
+		insert into cart_tbl(n_Id, ac_ProductNum, bookCount)
+		values(#{n_Id}, #{ac_ProductNum}, #{bookCount}) 
+	
+	</insert>
+	
+	
+	<!-- 카트 삭제 -->
+	<delete id="deleteCart">
+	
+		delete from cart_tbl where cartId = #{cartId}
+	
+	</delete>
+	
+	<!-- 카트 수량 수정 -->
+	<update id="modifyCount">
+	
+		update cart_tbl set bookCount=#{bookCount} where cartId = #{cartId}
+	
+	</update>
+	
+	
+	<!-- 카트 목록 -->
+	<select id="getCart" resultType="com.myspring.trip.model.CartDTO">
+	
+		select a.cartId, a.n_Id, a.le_ProductNum, a.bookCount, b.ac_CompanyName, b.price, b.bookDiscount
+		from cart_tbl a left outer join accommodation_tbl b on a.le_ProductNum = b.le_ProductNum
+		where n_Id = #{n_Id}	
+	
+	</select>
+	
+	<!-- 카트 확인 -->
+	<select id="checkCart" resultType="com.myspring.trip.model.CartDTO">
+	
+		select * from cart_tbl 
+		where n_Id = #{n_Id} and ac_roomNum = #{ac_roomNum}
+	
+	</select> 
+	
+</mapper>
+
+ 

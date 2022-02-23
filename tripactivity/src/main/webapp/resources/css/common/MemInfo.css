@@ -1,0 +1,86 @@
+@charset "UTF-8";
+
+
+main {
+	height:721px;
+}
+
+.kye_member_inform {
+ 	width: 1256px;
+ 	border-top: 2px solid #a5a8a7;	
+ 	background-color: #fff;
+ 	padding-top:30px;
+ 	text-align: left;
+}
+
+.Easy-sgin-in-wrap {
+   padding:0 !important;
+}
+
+	/* 중복아이디 존재하지 않는경우 */
+	.id_input_re_1{
+		color : green;
+		display : none;
+	}
+	/* 중복아이디 존재하는 경우 */
+	.id_input_re_2{
+		color : red;
+		display : none;
+	}
+	
+	/* 비밀번호 확인 일치 유효성검사*/
+	.pwck_input_re_1{
+	 	color:green;
+	 	display:none;
+	}
+	.pwck_input_re_2{
+	 	color:red;
+	 	display:none;
+	}
+	
+
+table {
+	
+	width:100%;
+	min-width:1256px;
+	}
+	
+
+table td {
+	padding:10px;
+	padding-right:20px;
+	font-size:16px;
+	border:1px solid #CCC
+}
+
+.option-menu{
+	background:#B7C8D0;
+	border:1px solid #8BA7B4;	
+}
+
+select {
+	border:1px solid #ccc;
+	padding:3px;
+	font-size:16px;
+	}
+input {
+	border:1px solid #ccc;
+	padding:4px;
+	font-size:16px;
+}
+input:focus {outline:none}
+
+.kye_submit_bottom {
+	text-align: center;
+	padding-top: 40px;
+}
+
+.kye_submit_bottom input {
+	width: 100px;
+}
+
+/* 공란 경고 태그 */
+.Easy-sgin-in-wrap span {
+	display: none;
+	color: #e05757;
+}

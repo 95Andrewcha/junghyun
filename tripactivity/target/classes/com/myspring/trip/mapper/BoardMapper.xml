@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.myspring.trip.mapper.BoardMapper">
+  		<!-- 게시물 목록 -->
+	<!-- <select id="getList" resultType="com.myspring.trip.model.BoardVO">
+		select
+			board_seq, board_title, board_content, n_Id, board_date
+		from board_tbl
+	</select> -->
+	<!-- 게시물 목록 -->
+	 <select id="getfaq" resultType="com.myspring.trip.model.BoardVO">
+		select
+			 board_title, board_content
+		from board_tbl  where board_kind LIKE 'C%'
+	</select>
+  		<!-- 검색 조건문 -->
+	<sql id="criteria">
+		<trim prefix="where (" suffix=")" prefixOverrides="OR">
+			<foreach collection="typeArr" item="type">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'T'.toString()">
+							title like concat('%',#{keyword},'%') 
+						</when>
+						<when test="type == 'C'.toString()">
+							content like concat('%',#{keyword},'%') 
+						</when>
+						<when test="type == 'W'.toString()">
+							writer like concat('%',#{keyword},'%' )
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	
+	</sql>
+  		<!-- 공지사항 글 등록 -->
+    <insert id="notice_write">
+        
+        insert into board_tbl(board_kind,board_title,n_Id, board_content) values (#{board_kind},#{board_title},#{n_Id},  #{board_content})
+        
+    </insert>
+    <!-- 1대 1 문의사항 글 등록 -->
+    <insert id="inquiry_write">
+        <selectKey resultType="int" keyProperty="board_seq"
+			order="AFTER">
+
+			SELECT MAX(board_seq) FROM board_tbl
+
+		</selectKey>
+        insert into board_tbl(board_kind, board_kind1, board_title,n_Id, board_content ,board_state) values (#{board_kind},#{board_kind1},#{board_title},#{n_Id},  #{board_content},  #{board_state})
+        
+    </insert>
+    
+     <!-- 게시판 조회 -->
+    <select id="getPage" resultType="com.myspring.trip.model.BoardVO">
+    
+        SELECT * from board_tbl
+      where board_seq = #{board_seq}
+    
+    </select>
+    
+    
+    <!-- 1대1 문의사항 게시판 수정 -->
+    <update id="inquirymodify">
+        <!-- MySQL -->
+        update board_tbl set board_title = #{board_title}, board_content = #{board_content}, board_state = #{board_state} where board_seq = #{board_seq}
+       
+    </update>
+    
+     <!-- MySQL-->
+    <!-- 공지사항 게시물 목록(페이징) -->
+    <select id="getListPaging" resultType="com.myspring.trip.model.BoardVO">
+    
+        select * from (
+                SELECT board_seq, board_title, n_Id, board_date FROM board_tbl where board_kind LIKE 'A%' order by board_seq desc) as T1 
+        <!-- limit ((${pageNum}-1)*${amount}), ${amount} -->
+        limit #{skip},#{amount} 
+    
+    </select>
+    
+    <!-- 문의사항 게시물 목록(페이징) -->
+    <select id="inquiryPaging" resultType="com.myspring.trip.model.BoardVO">
+    
+        select * from (
+                SELECT board_seq, board_kind1, n_Id , board_title, board_date ,board_state FROM board_tbl where board_kind LIKE 'B%' order by board_seq desc) as T1 
+        <!-- limit ((${pageNum}-1)*${amount}), ${amount} -->
+        limit #{skip},#{amount} 
+    
+    </select>
+
+	<!-- 게시판 삭제 -->
+	<delete id="delete">
+	
+		delete from board_tbl where board_seq = #{board_seq}
+	
+	</delete>
+	<!-- 게시판 삭제 -->
+	<delete id="deletein">
+	
+		delete from board_tbl where board_seq = #{board_seq}
+	
+	</delete>	
+	
+	<!-- 공지사항 글 총 개숫 -->
+	<select id="getTotal" resultType="int">
+	
+		select count(*) from board_tbl where board_kind = 'A'	
+	
+	</select>
+	
+	<!--  1:1문의하기 글 총 갯수  -->
+	<select id="getTotals" resultType="int">
+	
+		select count(*) from board_tbl where board_kind = 'B'	
+	
+	</select>
+	
+	 <!-- MySQL-->
+   <!--  1대1 상품 문의 연습페이지 진입   -->
+    <select id="product_inquiry" resultType="com.myspring.trip.model.BoardVO">
+    
+        select * from (
+                SELECT board_seq, board_title, n_Id,board_state, board_date FROM board_tbl where board_kind LIKE 'C%' order by board_seq desc) as T1 
+        <!-- limit ((${pageNum}-1)*${amount}), ${amount} -->
+        limit #{skip},#{amount} 
+    
+    </select>
+    
+    <!--  1대1 상품 문의 연습페이지 갯수  -->
+	<select id="igetTotals" resultType="int">
+	
+		select count(*) from board_tbl where board_kind = 'C'	
+	
+	</select>
+	
+	<!--1대1 상품 문의 연습페이지 등록 -->
+    <insert id="product_inquiry_write">
+        <selectKey resultType="int" keyProperty="board_seq"
+			order="AFTER">
+
+			SELECT MAX(board_seq) FROM board_tbl
+
+		</selectKey>
+        insert into board_tbl(board_kind, board_title,n_Id, board_content ,board_state) values (#{board_kind},#{board_title},#{n_Id},  #{board_content},  #{board_state})
+        
+    </insert>
+    
+ 
+  </mapper>

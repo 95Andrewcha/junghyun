@@ -1,0 +1,152 @@
+ /* 전체 적용 */
+ cjh_mypage_container {
+ 	width: 1280px;
+ 	height:100%;	
+ 	background-color: #fff;
+ 	margin: 0 auto;
+ }
+
+ a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: #fff;
+}
+            *{
+                margin:0; padding:0; list-style:none;
+            }
+            /* 폰트 */
+            @font-face {
+                font-family: 'Pretendard-Regular';
+                src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+                font-weight: 400;
+                font-style: normal;
+                font-family: 'Pretendard-Thin';
+                src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Thin.woff') format('woff');
+                font-weight: 100;
+                font-style: normal;
+            }
+
+            .cjh_mypage_container{height:222px; margin:0 auto; margin-right:30px;}
+            .cjh_first_container{width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                border: 1px solid #a5a8a7;
+                box-sizing: border-box;
+                border-radius: 20px;
+                padding: 40px 30px;
+            }
+            .kye_mypage_T_P_text{
+                
+                font-family: "Pretendard-Regular";
+            }
+
+            .kye_mypage_T_P_text>h3{
+                font-family: 'Pretendard-Thin';
+            }
+
+            .kye_mypage_T_buttons{
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+               
+            }
+
+            #kye_icon{
+                width: 45px;
+                position: absolute;
+                top: 5%;
+                left: 34%;
+            }
+
+            #button_solid{
+                position:relative;
+                width: 15px;
+                height: 3px;
+                background-color: #fff;
+                left: 45%;
+                top: 38%;
+            }
+
+            #button_text{
+                color: #fff;
+                display: inline;
+                position: absolute;
+                top: 38%;
+                left: 46%;
+                transform: translate(-50%, 0%);
+                margin:0;
+                font-family: "Pretendard-Regular";
+                border: 0;
+
+            }
+
+            #kye_a{
+                font-size: 38pt;
+            }
+
+            #kye_a_reserves{
+                font-size: 24pt;
+            }
+
+            .kye_M_T_B_reservation, .kye_M_T_B_coupone, .kye_M_T_B_reserves{
+                position:relative;
+                width: 140px;
+                height: 140px;
+                border-radius: 50%;
+                background-color: #48c5de;
+                margin-right: 20px;
+                
+            }
+            #kye_a_reserves{
+                white-space:nowrap;
+                position: absolute;
+                left: -48px;
+                top: 10px;
+            }
+
+            #kye_a_reserves b{font-size:15px;}
+
+            .cjh_align{position:relative; border-bottom:5px solid #e3e3ee; height:40px;}
+            /* 마이페이지 중간 바디영역 */
+
+            .kye_M_M_TR{position:relative; }
+       #kye_M_M_TR_plus{position: absolute;
+   top: 50%;
+   right: 0;
+   transform: translate(-50%,-50%); cursor: pointer; font-size:12px;}
+
+   #kye_M_M_TR_plus2{position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(-50%,-50%); cursor: pointer; font-size:12px;}
+
+    #kye_M_M_TR_plus3{position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translate(-50%,-50%); cursor: pointer; font-size:12px;}
+  
+       .cjh_table{width:100%;}
+       .cjh_th>th{width:20%;}     
+       
+       
+       .cjh_th::nth-child(2){display:none;}
+
+
+       td{text-align:center;}
+
+       .cal{padding:10px 0px; text-align:right;}
+       .cjh_td_reservation{
+           width:100px;
+           margin-top:10px;
+           text-align:center;
+           border:1px solid Skyblue;
+           background:Skyblue;
+           border-radius:3px;
+           line-height:25px;
+           cursor: pointer;
+       }
+ 
+.cjh_second_container{margin-top:100px;}
+.last_div{margin-bottom:100px;}

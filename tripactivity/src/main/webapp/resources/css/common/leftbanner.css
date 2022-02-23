@@ -1,0 +1,18 @@
+/* right recent_wathcer_banner*/
+.fa-chevron-left{font-size:25px; color:skyblue;}
+    .fa-chevron-right{font-size:25px; color:skyblue;}
+.cjh_fixed{outline:1px solid skyblue;}
+    .cjh_left_container{width:200px; position:fixed;; top:20%; right:4%; display:flex; flex-direction:column;
+         justify-content: center; align-items:center; transition:all .3s ease-in-out; background-color:white;}
+    .cjh_left_container_box{width:90%; margin-top:15px;}
+    div.cjh_left_container_box:nth-child(2){
+        height:100px;
+    }
+    div.cjh_left_container_box:nth-child(3){
+        height:100px;
+    }
+    
+    .cjh_left_container_box>a{width:100%;  text-align:center;}
+    .cjh_left_container_box>a>img{width:100%; height:100%; text-align:center; display:block}
+    .cjh_left_container_first_box{display:flex; flex-direction:column;}
+    .cjh_left_container_first_box>a{background-color:#e3e3e3; margin-bottom:5px; line-height:30px; display:block; text-decoration:none;}

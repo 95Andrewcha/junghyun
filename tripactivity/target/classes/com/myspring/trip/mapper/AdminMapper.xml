@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.myspring.trip.mapper.AdminMapper">
+
+	<select id="selectNMember"
+		resultType="com.myspring.trip.model.NmemberVO">
+		select
+		*
+		from n_member_tbl
+	</select>
+	
+	<select id="selectDeletedNMember" resultType="com.myspring.trip.model.Deleted_n_memberVO">
+		
+		select*from deleted_n_member_tbl
+	</select>
+	
+	<select id="selectCmember" resultType="com.myspring.trip.model.CmemberVO">
+		select * from c_member_tbl
+	</select>
+
+	<!-- <update id="updateCMember" resultType="com.myspring.trip.model.CmemberVO"> 
+		update email1, email2, phone1, phone2, phone3 from c_mbmer_tbl </update> -->
+
+	
+	<select id="selectCoupon"
+		resultType="com.myspring.trip.model.CouponVO">
+		select coupon_number, coupon_name, couponContents, startDate, endDate from coupon_tbl
+	</select>
+
+	<!-- 쿠폰 등록 -->
+	<insert id="couponEnroll">
+		insert into coupon_tbl(coupon_name, issued, startDate, endDate,
+		couponContents, cri_price,
+		overlap, discount_price)
+		values(#{coupon_name}, #{issued},  #{startDate}, #{endDate}, #{couponContents},
+		#{cri_price},
+		#{overlap}, #{discount_price})
+	</insert>
+
+	<delete id="delteCoupon">
+		delete coupon_Tbl
+		where coupon_Number =#{coupon_Number}
+	</delete>
+
+	<!-- 공지사항 게시물 목록(페이징) -->
+	<select id="getListPaging"
+		resultType="com.myspring.trip.model.BoardVO">
+
+		select * from (
+		SELECT board_seq, board_title, admin_id, board_date FROM board_tbl where
+		board_kind LIKE 'A%' order by board_seq desc) as T1
+		<!-- limit ((${pageNum}-1)*${amount}), ${amount} -->
+		limit #{skip},#{amount}
+
+	</select>
+
+	<!-- 공지사항 글 등록 -->
+	<insert id="notice_write">
+		<selectKey resultType="int" keyProperty="board_seq"
+			order="AFTER">
+
+			SELECT MAX(board_seq) FROM board_tbl
+
+		</selectKey>
+		insert into board_tbl(board_kind,board_title,admin_id, board_content) values
+		(#{board_kind},#{board_title}, #{admin_id}, #{board_content})
+
+	</insert>
+
+	<!-- 게시판 조회 -->
+	<select id="getPage"
+		resultType="com.myspring.trip.model.BoardVO">
+
+		SELECT * from board_tbl
+		where board_seq = #{board_seq}
+
+	</select>
+
+	<!-- 공지사항 게시판 수정 -->
+	<update id="admin_modify">
+		<!-- MySQL -->
+		
+		update board_tbl set board_title = #{board_title}, board_content =
+		#{board_content} where board_seq = #{board_seq}
+
+	</update>
+
+	<!-- 이미지 등록 -->
+	<insert id="imageEnroll">
+
+
+		insert into img_tbl(board_seq, fileName, uploadPath, uuid) values
+		(#{board_seq}, #{fileName}, #{uploadPath}, #{uuid})
+
+	</insert>
+	<!-- 지정 상품 이미지 전체 삭제 -->
+	<delete id="deleteImageAll">
+
+		delete FROM img_tbl where board_seq = #{board_seq}
+
+	</delete>
+
+  <!-- 검색 
+    <sql id="criteria">
+    	<trim prefix="where (" suffix=")" prefixOverrides="OR">
+    		<foreach collection="typeArr" item="type">
+    			<trim prefix="OR">
+    				<choose>
+    					<when test="type =='T'.toString()">
+    						title like concat('%', #{keyword}, '%')
+    					</when>
+    					<when test="type == 'C'.toString()">
+    						content like concat('%', #{keyword}, '%')
+    					</when>
+    					<when test="type == 'W'.toString()">
+    						writer like concat('%', #{keyword), '%')
+    					</when>
+    				</choose>
+    			</trim>
+    		</foreach>
+    	</trim>
+    </sql>
+    -->
+    
+    
+    
+    
+    <!-- 아이디 중복확인 -->
+    <select id="checkUserIdExist" parameterType="java.lang.String" resultType="java.lang.String">
+    	<![CDATA[select admin_Id from admin_Tbl
+    	where admin_Id = #{admin_Id}
+    	]]>
+    </select>
+    <!--  회원가입 -->
+    <insert id="addAdmininfo" parameterType="com.myspring.trip.model.AdminVO">
+    	<![CDATA[
+    		insert into admin_Tbl(admin_name, admin_Id, admin_pw, admin_pw2, admin_phone, admin_email)
+    		values(#{admin_name}, #{admin_Id}, #{admin_pw}, #{admin_pw2}, #{admin_phone}, #{admin_email})
+    	]]>
+    </insert>
+    <!--  로그인 -->
+    <select id="getLoginUserInfo" parameterType="com.myspring.trip.model.AdminVO" resultType="com.myspring.trip.model.AdminVO">
+    	<![CDATA[
+    		select admin_num, admin_name from admin_Tbl
+    		where admin_Id=#{admin_Id} and admin_pw=#{admin_pw}
+    	]]>
+    </select>
+    
+    <!-- 관리자 회원정보 조회 -->
+    <select id='getModifyAdminInfo' parameterType="java.lang.Integer" resultType="com.myspring.trip.model.AdminVO">
+    	<![CDATA[
+    		select admin_Id, admin_name from admin_Tbl where admin_num=#{admin_num}
+    	]]>
+    </select>
+    
+    <!-- 관리자 회원 정보 변경 -->
+    <update id="modifyAdminInfo" parameterType="com.myspring.trip.model.AdminVO">
+    	<![CDATA[
+    		update admin_Tbl set admin_pw =#{admin_pw} where admin_num=#{admin_num}
+    	]]>
+    </update>
+    
+    <!-- 관리자 메인페이지 일반회원 문의 조회 -->
+    <select id="nmemberQuestionInfo" resultType="com.myspring.trip.model.AdminQuestionVO">
+    	<![CDATA[
+    		select board_seq, n_Id, board_title, board_content, board_date from question_tbl 
+    		where idx=1
+    	]]>
+    </select>
+    
+    <!-- 관리자 메인페이지 기업 문의 조회 -->
+    <select id="nmemberQuestionInfo2" resultType='com.myspring.trip.model.AdminQuestionVO'>
+    	<![CDATA[
+    		select board_seq, c_Id, board_title, board_content, board_date from question_tbl 
+    		where idx=2
+    	]]>
+    </select>
+    
+    <!-- 관리자 메인페이지 신고 게시판 조회 -->
+    <select id="reportInfo" resultType="com.myspring.trip.model.AdminQuestionVO">
+    	<![CDATA[
+    		select * from question_tbl where idx=3
+    	]]>
+    </select>
+    
+    <!-- 관리자 페이지 기업, 일반회원 문의 조회 -->
+    <select id="memberQuestionInfo" resultType="com.myspring.trip.model.AdminQuestionVO">
+    	<![CDATA[
+    		select * from question_tbl where idx=1 
+    	]]>
+    </select>
+	
+	<!-- 회원 탈퇴 게시판 조회 -->
+	<select id="Deleted_getPage" resultType="com.myspring.trip.model.Deleted_n_memberVO">
+		select*from deleted_n_member_tbl where n_Id =#{n_Id}
+	</select>
+	
+	<!-- 기업회원 조회 -->
+	<select id="select_c_Id" resultType="com.myspring.trip.model.CmemberVO">
+		select * from c_member_tbl where c_Id=#{c_Id}
+	</select>
+	
+	<!-- 기업 회원 정보 수정 -->
+	<update id="c_member_modify">
+		update c_member_tbl set
+		company_Name =#{company_Name},
+		company_Number =#{company_Number},
+		alert_Count =#{alert_Count},
+		c_Pw1 =#{c_Pw1},
+		sex =#{sex},
+		c_Name=#{c_Name},
+		birth_y=#{birth_y},
+		birth_m=#{birth_m},
+		birth_d=#{birth_d},
+		email1=#{email1},
+		email2=#{email2},
+		phone1=#{phone1},
+		phone2=#{phone2},
+		phone3=#{phone3}
+		where c_Id=#{c_Id}
+		
+	</update>
+	
+	<!-- cmembervo 페이징 -->
+	<select id="getCmemberListPaging" resultType="com.myspring.trip.model.CmemberVO">
+		<![CDATA[
+		select * from(
+			select level, c_Id, c_Pw1, c_Name, birth_y, birth_m, birth_d,sex
+			 email1, email2, phone1, phone2, phone3, date from c_member_tbl order by c_Id desc) as C1
+			 limit #{skip}, #{amount}
+		]]>
+	</select>
+	
+	<!-- 기업회원 게시물 총 개수 -->
+	<select id="CmembergetTotal" resultType="int">
+		select count(*) from c_member_tbl
+	</select>
+</mapper>
+
+ 

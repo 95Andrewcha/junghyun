@@ -1,0 +1,351 @@
+@charset "UTF-8";
+label{
+            cursor: pointer;
+        }
+        button{
+            padding:0;
+            cursor:pointer;
+        }
+        #yj_content{
+            overflow:hidden;
+         
+        }
+        .yj_reserve{
+            width:1024px;
+            margin:0 auto;
+        }
+        .yj_right{
+            float:right;
+            width:310px;
+            margin:40px 31px 0 0;
+            background:rgb(250, 250,250);
+        }
+        .yj_reserve_info{
+            margin:39px 24px 0 24px;
+            padding: 0 0 31px 0;
+            border-bottom:1px solid #848c94;
+            background:none;
+        }
+        .yj_reserve_name{
+            height: auto;
+            margin:0 0 29px 0;
+            padding:0;
+            border-bottom:none;
+            line-height:32px;
+            text-align: left;
+        }
+        .yj_reserve_name>strong{
+            display:block !important;
+            position: relative;
+            margin-bottom:6px;
+            font-size:18px !important;
+            line-height:1;
+            color:rgba(0,0,0,0.38);
+        }
+        .yj_reserve_info>p:last-child{
+            margin-bottom:0px;
+        }
+        .yj_reserve_info>p>b{
+            font-weight:bold;
+            font-size:20px;
+        }
+        .yj_reserve_total_price{
+            display:block;
+            padding: 39px 24px 33px !important;
+            background: none !important;
+        }
+        .yj_reserve_total_price>p>strong{
+            display:block;
+            font-size:16px;
+            font-weight:400;
+        }
+        .yj_reserve_total_price>p>strong>b{
+            font-size:18px;
+            font-weight:700;
+        }
+        .yj_reserve_total_price>p>span{
+            display:block;
+            padding:19px 0 23px;
+            font-size:24px;
+            font-weight:700;
+            color:#48c5de;
+        }
+        .yj_reserve_total_price>ul{
+        	padding:0 !important;
+        }
+        .yj_reserve_total_price>ul>li{
+            margin-bottom:2px;
+            font-size:16px;
+            line-height: 26px;
+            color:#1d1d1d;
+        }
+        .yj_reserve_total_price>ul>li>span{
+            color:#48c5de;
+        }
+        .yj_btn_pay{
+            width:100%;
+            height:56px;
+            border:none;
+            font-size:15px;
+            line-height:56px;
+            color:#f7f7f7;
+            text-align: center;
+            border-radius: 4px;
+        }
+        .yj_left_right_red{
+            background:#48c5de;
+        }
+        .yj_left{
+            float:right;
+            width:564px;
+            margin: 40px 88px 100px 0;
+        }
+        .yj_reserve_information{
+            border-bottom:1px solid #848c94;
+        }
+        .yj_reserve_information>h3{
+            display:block;
+            margin:54px 0 42px 0;
+            font-weight:bold;
+        }
+        .yj_reserve_information>strong{
+            display:block;
+            padding: 0 0 12px 0;
+            font-size:18px;
+            color:#1d1d1d;
+        }
+        .yj_reserve_inp_wrap{
+            border:1px solid #848c94;
+            height:48px;
+            padding: 8px 14px 8px 16px;
+            border-radius:4px;
+            position: relative;
+        }
+        .yj_reserve_inp_wrap>input{
+            border:none;
+            background:none;
+            width:100%;
+            margin-top:2px;
+            font-size:18px;
+            color:#1d1d1d;
+        }
+        .yj_reserve_alert_txt{
+            height:46px;
+            padding-top:5px;
+            font-size:14px;
+            color:#48c5de;
+        }
+        .yj_reserve_phone_confirm{
+            position:relative;
+            margin:16px 0;
+        }
+        .yj_reserve_input_box{
+            border:1px solid #848c94;
+            height:48px;
+            padding: 8px 14px 8px 16px;
+            border-radius:4px;
+            position: relative;
+        }
+        .yj_reserve_input_box>input{
+            border:none;
+            background:none;
+            width:100%;
+            margin-top:2px;
+            font-size:18px;
+            color:#1d1d1d;
+        }
+        .yj_reserve_visit{
+            position:relative;
+            margin-top:0;
+            padding:0;
+            text-align: left;
+        }
+        .yj_reserve_visit>strong{
+            position:relative;
+            top:0;
+            left:0;
+            height:32px;
+            padding:0;
+            color:#848c94;
+            font-size:18px;
+            line-height:normal;
+            text-align: center;
+        }
+        .yj_reserve_visit>div>button{
+            display:inline-block;
+            width:120px;
+            height:40px;
+            margin-top:20px;
+            border:1px solid#1d1d1d;
+            border-radius:4px;
+            font-size:16px;
+            background:#fff;
+        }
+        .yj_walk>span{
+            display:inline-block;
+            
+        }
+        .yj_car>span{
+            display:inline-block;
+            background:url('reserve_icons8-car-24.png') 0 50% no-repeat;
+            background-size:18px auto;
+        }
+        .yj_parking_txt{
+            height:47px;
+            padding-top:8px;
+            font-size:14px;
+        }
+        .yj_reserve_price_wrap{
+            overflow: hidden;
+            margin: 0 0 0 0;
+            padding:0 0;
+            border-bottom: 1px solid #848c94;
+        }
+        .yj_reserve_price_wrap>h3{
+            display:block;
+            margin:42px 0 42px 0;
+            font-weight: bold;
+        }
+        .yj_reserve_product_amount{
+            margin-bottom:20px;
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+            width:100%;
+            font-size:18px;
+            color:#848c94;
+        }
+        .yj_reserve_product_amount>b{
+            color:#1d1d1d;
+            font-weight:bold;
+        }
+        .yj_reserve_discount_container{
+            margin-bottom:18px;
+            display:flex;
+            flex-direction:column;
+            width:100%;
+        }
+        .yj_reserve_discount_header{
+            margin-bottom:10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width:100%;
+            height:40px;
+        }
+        .yj_reserve_discount_method_button{
+            padding:0 14px;
+            height:40px;
+            line-height: 40px;
+            border:1px solid #848c94;
+            border-radius: 4px;
+            background:#fff;
+            font-size:16px;
+            color:#1d1d1d;
+        }
+        .yj_reserve_value_total{
+            display:flex;
+            align-items: center;
+            font-size:18px;
+            font-weight:700;
+        }
+        .yj_reserve_discount_coupons_amount{
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+            width:100%;
+            height:32px;
+            color: #848c94;
+        }
+        .yj_reserve_discount_point_amount{
+            display: flex;
+            align-items: center;
+            font-size:18px;
+            font-weight: 700;
+        }
+        .yj_reserve_value_total{
+            display: flex;
+            align-items: center;
+            font-size:18px;
+            font-weight: 700;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            text-align: right;
+        }
+        .yj_reserve_discount_point_input{
+            margin-left:4px;
+            margin-right:4px;
+            padding:8px 14px 8px 16px;
+            width:100px;
+            height:100%;
+            background: none;
+            border:1px solid #848c94;
+            border-radius: 4px;
+            color:#1d1d1d;
+            font-size:18px;
+            text-align:right;
+        }
+        .yj_reserve_pay_select>h3{
+            display:block;
+            margin-bottom:19px;
+            font-size:20px;
+            font-weight:bold;
+            margin:54px 0 42px 0;
+        }
+        .yj_reserve_pay_select>select{
+            width:288px;
+        }
+        .yj_reserve_select_type_1{
+            height:48px;
+            padding:0 12px;
+            border:1px solid #848c94;
+            border-radius: 4px;
+            background:#fff url('reserve_icons8-expand-arrow-24.png') right 10px top 50% no-repeat;
+            font-size:18px;
+            color:#848c94;
+            cursor:pointer;
+        }
+        .yj_reserve_agree{
+            padding:23px 16px;
+            font-size:16px;
+            border:none;
+            background: #fff;
+        }
+        .yj_reserve_all_check{
+            font-weight:700;
+        }
+        .yj_reserve_agree>p{
+            position: relative;
+            padding-top:11px;
+            padding-bottom:10px;
+            line-height:1.2;
+        }
+        .yj_inp_chk_02{
+            width:24px;
+            height:24px;
+            border:none;
+            cursor:pointer;
+            vertical-align:text-top;
+        }
+        .yj_reserve_agree>label>span{
+            display:inline-block;
+        }
+        .yj_reserve_agree>p>span{
+            cursor:pointer;
+            color:#848c94;
+        }
+        .yj_reserve_agree>p>span>i{
+            font-style: normal;
+            text-decoration: underline;
+        }
+        .yj_reserve_agree>p>span>b{
+            font-weight: 400;
+            color:#48c5de;
+        }
+        .yj_reserve_mt_09{
+        	font-size:18px;
+        }
+        .yj_time_drag{
+        	display:none;
+        }

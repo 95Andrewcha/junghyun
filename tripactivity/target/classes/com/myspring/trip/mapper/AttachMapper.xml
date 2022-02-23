@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.myspring.trip.mapper.AttachMapper">
+	<select id="getAttachList"
+		resultType="com.myspring.trip.model.AttachImageVO">
+
+		select * from img_tbl where board_seq = #{board_seq}
+
+	</select>
+
+	<!-- 숙박 업체 이미지 리스트 -->
+	<select id="getAc_productImageList" resultType="com.myspring.trip.model.ImageFileVO">
+
+		select * from img_tbl where ac_ProductNum=#{ac_ProductNum}
+	
+	</select>
+
+	<!-- 객실 이미지 리스트 -->
+	<select id="getRoomImageList" resultType="com.myspring.trip.model.ImageFileVO">
+
+		select * from img_tbl where ac_roomNum=#{ac_roomNum}
+	
+	</select>
+
+	<!-- 레저 업체 이미지 리스트 -->
+	<select id="getLe_productImageInfo" resultType="com.myspring.trip.model.ImageFileVO">
+
+		select * from img_tbl where le_ProductNum=#{le_ProductNum} and imgFileKind = 'le_Main'
+	
+	</select>
+
+	<!-- 레저 업체 상품 설명 이미지 리스트 -->
+	<select id="getLe_explanationImageInfo" resultType="com.myspring.trip.model.ImageFileVO">
+
+		select * from img_tbl where le_ProductNum=#{le_ProductNum} and imgFileKind = 'le_Explanation'
+	
+	</select>
+</mapper>
+
+ 

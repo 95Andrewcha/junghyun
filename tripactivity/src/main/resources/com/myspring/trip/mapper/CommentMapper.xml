@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.myspring.trip.mapper.CommentMapper">
+
+	 <select id="commentCount" resultType="int">
+        SELECT
+            COUNT(*)
+        FROM reply_tbl
+    </select>
+    
+    <select id="commentList" resultType="com.myspring.trip.model.CommentVO">
+        SELECT
+            *
+        FROM reply_tbl
+    </select>
+    
+    
+    <insert id="commentInsert" parameterType="com.myspring.trip.model.CommentVO">
+        INSERT INTO
+        reply_tbl (reply_seq, board_seq, reply_content, n_Id, board_date)
+        VALUES(#{reply_seq},#{board_seq},#{reply_content},#{n_Id},now()) 
+    </insert>
+    
+    <update id="commentUpdate" parameterType="com.myspring.trip.model.CommentVO">
+        UPDATE reply_tbl
+            SET
+            reply_tbl = #{reply_content}
+        WHERE reply_seq = #{reply_seq}
+    </update>
+    
+    <delete id="commentDelete" parameterType="int">
+        DELETE FROM reply_tbl WHERE reply_seq = #{reply_seq}
+    </delete>
+
+
+	
+</mapper>
+
+ 

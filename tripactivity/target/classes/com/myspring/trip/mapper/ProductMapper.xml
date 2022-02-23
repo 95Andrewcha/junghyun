@@ -1,0 +1,460 @@
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.myspring.trip.mapper.ProductMapper">
+	
+	<!-- 숙박 업체 등록 -->
+	<insert id="ac_Enroll">
+		<selectKey resultType="int" keyProperty="ac_ProductNum" order="AFTER">
+  		
+  			SELECT MAX(ac_ProductNum) FROM accommodation_tbl
+  		
+  		</selectKey>
+		insert into accommodation_tbl(c_Name,
+									  ac_Kind,
+									  ac_CompanyName,
+									  ac_CompanyNumber,
+									  ac_Add,
+									  ac_Phone,
+									  ac_Call,
+									  ac_Area,
+									  ac_Info,
+									  ac_Stars,
+									  ac_Service,
+									  ac_junStartDate,
+									  ac_junEndDate,
+									  ac_maxStartDate,
+									  ac_maxEndDate) 
+									  values(#{c_Name},
+									  		 #{ac_Kind},
+									  		 #{ac_CompanyName},
+									  		 #{ac_CompanyNumber},
+									  		 #{ac_Add},
+									  		 #{ac_Phone},
+									  		 #{ac_Call},
+									  		 #{ac_Area},
+									  		 #{ac_Info},
+									  		 #{ac_Stars},
+									  		 #{ac_Service},
+									  		 #{ac_junStartDate},
+									  		 #{ac_junEndDate},
+									  		 #{ac_maxStartDate},
+									  		 #{ac_maxEndDate})
+	</insert>
+	<!-- 객실 등록 -->
+	<insert id="roomEnroll">
+		<selectKey resultType="int" keyProperty="ac_roomNum" order="AFTER">
+  		
+  			SELECT MAX(ac_roomNum) FROM room_tbl
+  		
+  		</selectKey>
+		insert into room_tbl(company_Name,
+							 ac_roomName,
+							 ac_maxPeople,
+							 ac_standardPeople,
+							 ac_n_sPrice,
+							 ac_h_sPrice,
+							 ac_n_sjunPrice,
+							 ac_h_sjunPrice,
+							 ac_n_smaxPrice,
+							 ac_h_smaxPrice,
+							 ac_stayDiscount,
+							 ac_timeDiscount,
+							 ac_roomCount,
+							 ac_d_maxTime,
+							 ac_d_endTime,
+							 ac_s_startTime,
+							 ac_s_endTime,
+							 ac_addPrice,
+							 ac_n_dPrice,
+							 ac_h_dPrice,
+							 ac_n_djunPrice,
+							 ac_h_djunPrice,
+							 ac_n_dmaxPrice,
+							 ac_h_dmaxPrice) 
+							 values (#{company_Name},
+							 		 #{ac_roomName},
+							 		 #{ac_maxPeople},
+							 		 #{ac_standardPeople},
+							 		 #{ac_n_sPrice},
+							 		 #{ac_h_sPrice},
+							 		 #{ac_n_sjunPrice},
+							 		 #{ac_h_sjunPrice},
+							 		 #{ac_n_smaxPrice},
+							 		 #{ac_h_smaxPrice},
+							 		 #{ac_stayDiscount},
+							 		 #{ac_timeDiscount},
+							 		 #{ac_roomCount},
+							 		 #{ac_d_maxTime},
+							 		 #{ac_d_endTime},
+							 		 #{ac_s_startTime},
+							 		 #{ac_s_endTime},
+							 		 #{ac_addPrice},
+							 		 #{ac_n_dPrice},
+							 		 #{ac_h_dPrice},
+							 		 #{ac_n_djunPrice},
+							 		 #{ac_h_djunPrice},
+							 		 #{ac_n_dmaxPrice},
+							 		 #{ac_h_dmaxPrice})
+	</insert>
+	
+	<!-- 이미지 등록 -->
+	<insert id="imageEnroll">
+	
+		insert into img_tbl(ac_ProductNum,ac_roomNum,le_ProductNum, fileName, uploadPath, uuid,imgFileKind) values (#{ac_ProductNum},#{ac_roomNum},#{le_ProductNum}, #{fileName}, #{uploadPath}, #{uuid},#{imgFileKind})
+	
+	</insert>
+	
+	<!-- 숙박 업체 목록 -->
+	<select id="ac_enrollList" resultType="com.myspring.trip.model.Ac_productVO">
+		
+		select 
+			*
+		from accommodation_tbl
+		
+	</select>
+	
+	<!-- 객실 목록 -->
+	<select id="roomList" resultType="com.myspring.trip.model.RoomVO">
+		
+		select 
+			*
+		from room_tbl
+		
+	</select>
+	
+	<!-- 객실 상세보기 -->
+	<select id="roomDetail" resultType="com.myspring.trip.model.RoomVO">
+		
+		select 
+			*
+		from room_tbl where ac_roomNum=#{ac_roomNum}
+		
+	</select>
+	
+	<!-- 숙박업체 상세보기 -->
+	<select id="ac_enrollDetail" resultType="com.myspring.trip.model.Ac_productVO">
+		
+		select 
+			*
+		from accommodation_tbl where ac_ProductNum=#{ac_ProductNum}
+		
+	</select>
+	
+	<!-- 숙박 업체 정보 수정 -->
+	<update id="ac_enrollModify">
+		
+		update accommodation_tbl set ac_Kind=#{ac_Kind},
+									  ac_Add=#{ac_Add},
+									  ac_Call=#{ac_Call},
+									  ac_Area=#{ac_Area},
+									  ac_Info=#{ac_Info},
+									  ac_Stars=#{ac_Stars},
+									  ac_Service=#{ac_Service},
+									  ac_junStartDate=#{ac_junStartDate},
+									  ac_junEndDate=#{ac_junEndDate},
+									  ac_maxStartDate=#{ac_maxStartDate},
+									  ac_maxEndDate=#{ac_maxEndDate}
+		where ac_ProductNum = ${ac_ProductNum}
+		
+	</update>
+	
+	<!-- 객실 정보 수정 -->
+	<update id="roomModify">
+		
+		update room_tbl set ac_roomName=#{ac_roomName},
+							 ac_maxPeople=#{ac_maxPeople},
+							 ac_standardPeople=#{ac_standardPeople},
+							 ac_n_sPrice=#{ac_n_sPrice},
+							 ac_h_sPrice=#{ac_h_sPrice},
+							 ac_n_sjunPrice=#{ac_n_sjunPrice},
+							 ac_h_sjunPrice=#{ac_h_sjunPrice},
+							 ac_n_smaxPrice=#{ac_n_smaxPrice},
+							 ac_h_smaxPrice=#{ac_h_smaxPrice},
+							 ac_stayDiscount=#{ac_stayDiscount},
+							 ac_timeDiscount=#{ac_timeDiscount},
+							 ac_roomCount=#{ac_roomCount},
+							 ac_d_maxTime=#{ac_d_maxTime},
+							 ac_d_endTime=#{ac_d_endTime},
+							 ac_s_startTime=#{ac_s_startTime},
+							 ac_s_endTime=#{ac_s_endTime},
+							 ac_addPrice=#{ac_addPrice},
+							 ac_n_dPrice=#{ac_n_dPrice},
+							 ac_h_dPrice=#{ac_h_dPrice},
+							 ac_n_djunPrice=#{ac_n_djunPrice},
+							 ac_h_djunPrice=#{ac_h_djunPrice},
+							 ac_n_dmaxPrice=#{ac_n_dmaxPrice},
+							 ac_h_dmaxPrice=#{ac_h_dmaxPrice}
+		where ac_roomNum = ${ac_roomNum}
+		
+	</update>
+	
+	<!-- 숙박 업체 정보 삭제 -->
+	<delete id="ac_enrollDelete">
+	
+		delete from accommodation_tbl where ac_ProductNum = #{ac_ProductNum}
+	
+	</delete>
+	
+	<!-- 객실 정보 삭제 -->
+	<delete id="roomDelete">
+	
+		delete from room_tbl where ac_roomNum = #{ac_roomNum}
+	
+	</delete>
+	
+	<!-- 어제자 날자 이미지 리스트 -->
+	<select id="checkImageList" resultType="com.myspring.trip.model.ImageFileVO">
+	
+		select * from img_tbl where uploadpath = DATE_FORMAT(DATE_ADD(NOW(), INTERVAL -1 DAY), '%Y\%m\%d')	
+	
+	</select>
+	
+	<!-- 지정된 숙박업체 이미지 정보 -->
+	<select id="getAttachAc_productInfo" resultType="com.myspring.trip.model.ImageFileVO">
+		
+		select * from img_tbl where ac_ProductNum = #{ac_ProductNum}
+		
+	</select>
+	
+	<!-- 지정된 객실 이미지 정보 -->
+	<select id="getAttachRoomInfo" resultType="com.myspring.trip.model.ImageFileVO">
+		
+		select * from img_tbl where ac_roomNum = #{ac_roomNum}
+		
+	</select>
+	
+	<!-- 지정 숙박업체 이미지 전체 삭제 --> 
+	<delete id="deleteAc_productImageAll">
+	
+		delete FROM img_tbl where ac_ProductNum = #{ac_ProductNum}
+	
+	</delete>
+	
+	<!-- 지정 객실 이미지 전체 삭제 --> 
+	<delete id="deleteRoomImageAll">
+	
+		delete FROM img_tbl where ac_roomNum = #{ac_roomNum}
+	
+	</delete>
+	
+	<!-- 레저 업체 등록 -->
+	<insert id="le_Enroll">
+		<selectKey resultType="int" keyProperty="le_ProductNum" order="AFTER">
+  		
+  			SELECT MAX(le_ProductNum) FROM activity_tbl
+  		
+  		</selectKey>
+		insert into activity_tbl(company_Name,
+								 company_Number,
+								 c_Name,
+								 le_Kind,
+								 le_Add,
+								 le_Phone,
+								 le_Call,
+								 le_Area,
+								 le_Select,
+								 le_useInfo,
+								 le_companyInfo,
+								 le_refundInfo) 
+							 values (#{company_Name},
+							 		 #{company_Number},
+							 		 #{c_Name},
+							 		 #{le_Kind},
+							 		 #{le_Add},
+							 		 #{le_Phone},
+							 		 #{le_Call},
+							 		 #{le_Area},
+							 		 #{le_Select},
+							 		 #{le_useInfo},
+							 		 #{le_companyInfo},
+							 		 #{le_refundInfo})
+	</insert>
+	
+	<!-- 티켓 등록 -->
+	<insert id="ticketEnroll">
+		insert into ticket_tbl(company_Name,
+								 le_ticketName,
+								 le_maxPeople,
+								 le_standardPeople,
+								 le_n_Price,
+								 le_h_Price,
+								 le_ticketDiscount,
+								 le_h_startTime,
+								 le_h_endTime,
+								 le_h_lastEntrance,
+								 le_n_startTime,
+								 le_n_endTime,
+								 le_n_lastEntrance) 
+							 values (#{company_Name},
+							 		 #{le_ticketName},
+							 		 #{le_maxPeople},
+							 		 #{le_standardPeople},
+							 		 #{le_n_Price},
+							 		 #{le_h_Price},
+							 		 #{le_ticketDiscount},
+							 		 #{le_h_startTime},
+							 		 #{le_h_endTime},
+							 		 #{le_h_lastEntrance},
+							 		 #{le_n_startTime},
+							 		 #{le_n_endTime},
+							 		 #{le_n_lastEntrance})
+	</insert>
+	
+	<!-- 레저 업체 목록 -->
+	<select id="le_enrollList" resultType="com.myspring.trip.model.Le_productVO">
+		
+		select 
+			*
+		from activity_tbl
+		
+	</select>
+	
+	<!-- 레저 업체 상세보기 -->
+	<select id="le_enrollDetail" resultType="com.myspring.trip.model.Le_productVO">
+		
+		select 
+			*
+		from activity_tbl where le_ProductNum = #{le_ProductNum}
+		
+	</select>
+	
+	<!-- 지정된 레저 업체 메인 이미지 정보 -->
+	<select id="getLe_productImageInfo" resultType="com.myspring.trip.model.ImageFileVO">
+		
+		select * from img_tbl where le_ProductNum = #{le_ProductNum}
+		
+	</select>
+	
+	<!-- 지정된 레저 업체 상품설명 이미지 정보 -->
+	<select id="getLe_explanationImageInfo" resultType="com.myspring.trip.model.ImageFileVO">
+		
+		select * from img_tbl where le_ProductNum = #{le_ProductNum}
+		
+	</select>
+	
+	<!-- 티켓 목록 -->
+	<select id="ticketList" resultType="com.myspring.trip.model.TicketVO">
+		
+		select 
+			*
+		from ticket_tbl
+		
+	</select>
+	
+	<!-- 티켓 상세보기 -->
+	<select id="ticketDetail" resultType="com.myspring.trip.model.TicketVO">
+		
+		select 
+			*
+		from ticket_tbl where le_ticketNum = #{le_ticketNum}
+		
+	</select>
+	
+	<!-- 레저 업체 정보 수정 -->
+	<update id="le_enrollModify">
+		
+		update activity_tbl set le_Kind=#{le_Kind},
+									  le_Add=#{le_Add},
+									  le_Call=#{le_Call},
+									  le_Area=#{le_Area},
+									  le_useInfo=#{le_useInfo},
+									  le_Select=#{le_Select},
+									  le_companyInfo=#{le_companyInfo},
+									  le_refundInfo=#{le_refundInfo}
+		where le_ProductNum = ${le_ProductNum}
+		
+	</update>
+	
+	<!-- 티켓 정보 수정 -->
+	<update id="ticketModify">
+		
+		update ticket_tbl set le_ticketName=#{le_ticketName},
+							 le_ticketDiscount=#{le_ticketDiscount},
+							 le_maxPeople=#{le_maxPeople},
+							 le_standardPeople=#{le_standardPeople},
+							 le_n_Price=#{le_n_Price},
+							 le_h_Price=#{le_h_Price},
+							 le_n_startTime=#{le_n_startTime},
+							 le_n_endTime=#{le_n_endTime},
+							 le_h_startTime=#{le_h_startTime},
+							 le_h_endTime=#{le_h_endTime},
+							 le_n_lastEntrance=#{le_n_lastEntrance},
+							 le_h_lastEntrance=#{le_h_lastEntrance}
+		where le_ticketNum = ${le_ticketNum}
+		
+	</update>
+	
+	<!-- 레저 업체 삭제 -->
+	<delete id="le_enrollDelete">
+	
+		delete from activity_tbl where le_ProductNum = #{le_ProductNum}
+	
+	</delete>
+	
+	<!-- 지정 레저업체 이미지 전체 삭제 --> 
+	<delete id="deleteLe_productImageAll">
+	
+		delete FROM img_tbl where le_ProductNum = #{le_ProductNum}
+	
+	</delete>
+	
+	<!-- 숙박 상품 리스트 페이징 -->
+    <select id="ac_productList" resultType="com.myspring.trip.model.Ac_productVO">
+    
+        select * from accommodation_tbl a left join room_tbl r on a.ac_CompanyName = r.company_Name where r.ac_n_sPrice = (select max(ac_n_sPrice) from room_tbl where ac_CompanyName = company_Name)
+        <if test="keyword != null">
+            and ac_Add like concat('%',#{keyword},'%') or ac_CompanyName like concat('%',#{keyword},'%')
+        </if>
+        order by ac_ProductNum desc 
+        limit #{skip}, #{amount}    
+    
+    </select>
+    
+   	<!-- 숙박업체 리스트 총 개수 -->
+   	<select id="ac_productListTotal" resultType="int">
+   	
+   		select count(*) from accommodation_tbl a left join room_tbl r on a.ac_CompanyName = r.company_Name where r.ac_n_sPrice = (select max(ac_n_sPrice) from room_tbl where ac_CompanyName = company_Name)
+   		<if test="keyword != null">
+   			and ac_Add like concat('%', #{keyword},'%') or ac_CompanyName like concat('%',#{keyword},'%')
+   		</if>
+   		
+   	</select>
+   	
+   	<!-- 객실 리스트 -->
+   	<select id="ac_roomList" resultType="com.myspring.trip.model.RoomVO">
+   	
+   		select * from accommodation_tbl a left outer join room_tbl r on a.ac_CompanyName = r.company_Name where ac_ProductNum = ${ac_ProductNum}
+   		
+   	</select>
+   	
+   	<!-- 숙박업체별 상세보기 페이지 -->
+   	<select id="getAc_productsInfo" resultType="com.myspring.trip.model.Ac_productVO">
+   	
+   		select ac_ProductNum, fileName, imgFileKind, uuid, uploadPath  from img_tbl where ac_ProductNum = ${ac_ProductNum}
+   	
+   	</select>
+   	
+   	<!-- 레저 상품 리스트 페이징 -->
+    <select id="le_productList" resultType="com.myspring.trip.model.Le_productVO">
+    
+        select * from activity_tbl a left join ticket_tbl r on a.company_Name = r.company_Name where r.le_n_Price = (select max(r.le_n_Price) from ticket_tbl r where a.company_Name = r.company_Name)
+        <if test="keyword != null">
+            and le_Add like concat('%',#{keyword},'%') or a.company_Name like concat('%',#{keyword},'%')
+        </if>
+        order by le_ProductNum desc 
+        limit #{skip}, #{amount}    
+    
+    </select>
+    
+   	<!-- 레저업체 리스트 총 개수 -->
+   	<select id="le_productListTotal" resultType="int">
+   	
+   		select count(*) from activity_tbl a left join ticket_tbl r on a.company_Name = r.company_Name where r.le_n_Price = (select max(le_n_Price) from ticket_tbl r where a.company_Name = r.company_Name)
+   		<if test="keyword != null">
+   			and le_Add like concat('%', #{keyword},'%') or a.company_Name like concat('%',#{keyword},'%')
+   		</if>
+   		
+   	</select>
+	
+  </mapper>

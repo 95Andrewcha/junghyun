@@ -1,0 +1,202 @@
+@charset "UTF-8";
+.yj_productEnroll_room{
+            display:block;
+        }
+        .yj_productEnroll>b{
+            padding:15px;
+            display:block;
+        }
+        .yj_productEnroll>ul{
+        	padding: 0px !important;
+        }
+        .yj_productEnroll>ul>li{
+            display:inline-block;
+            padding:10px;
+        }
+        .yj_productEnroll_service{
+            padding:15px;
+        }
+        .yj_productEnroll_service>ul{
+        	padding: 0px !important;
+        }
+        .yj_productEnroll_service>ul>li{
+            display:inline-block;
+            width:200px;
+            line-height: 50px;
+        }
+        .yj_productEnroll_section{
+            width:1060px;
+            margin:0 auto;
+            position:relative;
+        }
+        .yj_div1>ul>li{
+            display:inline-block;
+        }
+        .yj_imgpreview{
+            margin-top:15px;
+        }
+        .yj_productEnroll_option>ul>li{
+            padding:15px;
+        }
+        .yj_productEnroll_option>ul{
+        	padding:0px !important;
+        }
+        .yj_productEnroll_room>ul{
+            padding:10px;
+        }
+        .yj_productEnroll_room>ul>li{
+            display: inline-block;
+        }
+        .yj_div1{
+            padding:10px;
+        }
+        .yj_div1>ul{
+        	padding:0px !important;
+        }
+        .yj_add_roomClass{
+            float:right;
+        }
+        table{
+            width:100%;
+            border: 1px solid #1d1d1d;
+            text-align: center;
+        }
+        tr,td{
+            padding:10px !important;
+            border: 1px solid #1d1d1d !important;
+        }
+        th{
+            border:1px solid #1d1d1d !important;
+            background: #eee;
+            padding:10px !important;
+        }
+        .yj_title1{
+            text-align: center;
+            font-size:24px;
+            font-weight:bold;
+        }
+        .yj_title2{
+            text-align: center;
+            font-size:24px;
+            font-weight:bold;
+        }
+        .yj_dayTable{
+            margin-bottom:15px;
+            margin-top:15px;
+        }
+        .yj_daesilTable{
+            margin-bottom:15px;
+        }
+        .yj_productEnroll_image{
+            padding:15px;
+        }
+        .yj_productEnroll_image>label{
+            display:block;
+            width:200px;
+            background-color: #1d1d1d;
+            color:#fff;
+            text-align: center;
+            border-radius: 8px;
+            padding:10px;
+            cursor: pointer;
+            font-weight:bold;
+        }
+        .yj_productEnroll_image input[type="file"]{
+            position:absolute;
+            overflow: hidden;
+            width:1px;
+            height:1px;
+        }
+        .yj_roomImgPreview{
+            margin-top:15px;
+        }
+        .yj_productEnroll_info{
+            padding:15px;
+        }
+        span{
+            font-size:10px !important;
+            display: block;
+            margin-top:5px !important;
+            margin-bottom:5px !important;
+        }
+        .yj_roomTitle1{
+            font-size:24px;
+            font-weight: bold;
+        }
+        .yj_roomB{
+            font-size:24px;
+            font-weight: bold;
+        }
+        .ck-content{
+            height:300px;
+        }
+        .yj_roomSubmitButton1{
+            float:right;
+            margin:0 15px;
+        }
+        .yj_roomSubmitButton2{
+            float:right;
+            margin:0 auto;
+            padding-right:5px;
+        }
+        .yj_mainImgAdd{
+            display:block;
+        }
+        #yj_allButton{
+            border:1px solid #1d1d1d;
+            background-color: #1d1d1d;
+            color:#fff;
+            padding:7px;
+            border-radius:8px;
+            cursor:pointer;
+            font-weight:bold;
+        }
+        #yj_allButton:hover{
+            color:#1d1d1d;
+            background-color: #fff;
+        }
+        .yj_mainImgLi>label{
+            display:block;
+            width:200px;
+            background-color: #1d1d1d;
+            color:#fff;
+            text-align: center;
+            border-radius: 8px;
+            padding:10px;
+            cursor: pointer;
+            font-weight:bold;
+        }
+        .yj_mainImgLi input[type="file"]{
+            position:absolute;
+            overflow: hidden;
+            width:1px;
+            height:1px;
+        }
+        .yj_field>div>ul>li>b{
+            padding:15px;
+        }
+        .yj_field{
+            margin-top:20px;
+        }
+        .yj_field>div{
+            border:1px solid #eee;
+            border-radius: 8px;
+            padding:50px;
+            margin-bottom:20px;
+            padding-top:20px;
+        }
+        .yj_productEnroll_option{
+            border:1px solid #eee;
+            border-radius: 8px;
+            padding:50px;
+            margin-bottom:20px;
+            padding-top: 8px;
+        }
+        #yj_enrollSelect{
+            padding:2px 0;
+        }
+        input[type="checkbox"]{
+			zoom:2;
+			position:relative;
+			top:3px;
+		}
